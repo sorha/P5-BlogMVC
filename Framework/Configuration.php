@@ -10,7 +10,7 @@ class Configuration
 	{
 		if (isset(self::getParameters()[$name])) 
 		{
-			$value = self::getParameters()[$nom];
+			$value = self::getParameters()[$name];
 		}
 		else
 		{

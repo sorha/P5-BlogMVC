@@ -1,19 +1,17 @@
 <?php
 
-require_once 'View/View.php';
+require_once 'Framework/Controller.php';
 
-class ControllerHome
+class ControllerHome extends Controller
 {
 
 	public function __construct()
 	{
-
+		
 	}
 
-	// Affiche la page d'accueil
-	public function home()
+	public function index() 
 	{
-		$view = new View('Home');
-		$view->generate(array());
-	}
+		$this->generateView(array());
+    }
 }

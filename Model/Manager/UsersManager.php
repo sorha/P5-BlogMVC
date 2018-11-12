@@ -15,7 +15,7 @@ class UsersManager extends Model
             $usersTab[] = new User($data); // Rajouter un nouvel objet User crée à partir des donnees dans le tableau $usersTab
         }
 
-        return $usersTab // Renvoi un tableau d'objet User
+        return $usersTab; // Renvoi un tableau d'objet User
     }
 
     public function get($id)

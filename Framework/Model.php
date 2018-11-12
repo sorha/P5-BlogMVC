@@ -2,8 +2,15 @@
 
 require_once 'Configuration.php';
 
+/**
+ * Classe abstraite Modèle.
+ * Centralise les services d'accès à une base de données.
+ * Utilise l'API PDO de PHP
+ */
 abstract class Model 
 {
+    /** Objet PDO d'accès à la BD 
+        Statique donc partagé par toutes les instances des classes dérivées */
     private static $db;
 
     /**
@@ -35,7 +42,7 @@ abstract class Model
      */
     private static function getDb()
     {
-        if (self::db == null)
+        if (self::$db == null)
         {
             // Récupération des paramètres de configuration BD
             $dsn = Configuration::get("dsn");
@@ -43,9 +50,9 @@ abstract class Model
             $password = Configuration::get("password");
 
             // Création de la connexion
-            self::db = new PDO($dsn, $login, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));  
+            self::$db = new PDO($dsn, $login, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));  
         }
 
-        return self::db;
+        return self::$db;
     }
 }

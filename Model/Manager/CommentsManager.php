@@ -19,7 +19,7 @@ class CommentsManager extends Model
                 $commentsTab[] = new Comment($data); // Rajouter un nouvel objet Comment crée à partir des donnees dans le tableau $commentsTab
             }
 
-            return $commentsTab // Renvoi un tableau d'objet Comment
+            return $commentsTab; // Renvoi un tableau d'objet Comment
         }
         else
         {

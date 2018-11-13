@@ -2,7 +2,8 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8" />
-        <link rel="stylesheet" href="Content/css/style.css" />
+        <base href="<?= $rootWeb ?>" >
+        <link rel="stylesheet" href="P5-BlogMVC/Content/css/style.css" />
         <title><?= $title ?></title>
     </head>
     <body>

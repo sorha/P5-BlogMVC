@@ -1,9 +1,16 @@
 <?php
 
+require_once 'Configuration.php';
+/**
+ * Classe modélisant une vue
+ *
+ */
 class View 
 {
-    private $file;   // Nom du fichier associé à la vue
-    private $title; // Titre de la vue (défini dans le fichier associé à la vue)
+    /** Nom du fichier associé à la vue */
+    private $file;
+    /** Titre de la vue (défini dans le fichier vue) */
+    private $title;
     
     public function __construct($action, $controller = "")
     {
@@ -23,8 +30,10 @@ class View
     {
         // Génération de la partie spécifique de la vue
         $content = $this->generateFile($this->file, $data);
+        // Définie la racine du site
+        $rootWeb = Configuration::get("rootWeb", "/");
         // Génération du template commun utilisant la partie spécifique
-        $view = $this->generateFile('View/template.php', array('title' => $this->title, 'content' => $content));
+        $view = $this->generateFile('View/template.php', array('title' => $this->title, 'content' => $content, 'rootWeb' => $rootWeb));
 
         echo $view; // Renvoi de la vue au navigateur
     }

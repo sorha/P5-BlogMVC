@@ -1,1 +1,1 @@
-<p><?= $msgError ?></p>
+<p><?= $this->sanitize($msgError) ?></p>

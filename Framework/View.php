@@ -58,4 +58,10 @@ class View
             throw new Exception("Fichier '$file' introuvable");
         }
     }
+
+    // Nettoie une valeur insérée dans une page HTML
+    private function sanitize($value) 
+    {
+        return htmlspecialchars($value, ENT_QUOTES, 'UTF-8', false);
+    }
 }

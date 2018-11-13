@@ -4,12 +4,12 @@
     ?>
     <article>
         <header>
-            <a href="<?= "post/index/" . $post['id'] ?>">
-                <h1 class="titreBillet"><?= $post['title'] ?></h1>
+            <a href="<?= "post/index/" . $this->sanitize($post['id']) ?>">
+                <h1 class="titreBillet"><?= $this->sanitize($post['title']) ?></h1>
             </a>
-            <time><?= $post['dateCreation'] ?></time>
+            <time><?= $this->sanitize($post['dateCreation']) ?></time>
         </header>
-        <p><?= $post['content']  ?></p>
+        <p><?= $this->sanitize($post['content'])  ?></p>
     </article>
     <hr />
 <?php endforeach; ?>

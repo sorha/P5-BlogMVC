@@ -21,6 +21,8 @@ class User
     	// Hydratation dynamique (Appel d'une méthode dont le nom n'est pas connu à l'avance).
 		foreach ($data as $key => $value)
 		{
+		    // Transformation de underscore_case vers camelCase
+		    $key = lcfirst(str_replace('_', '', ucwords($key, '_')));
 			// On récupère le nom du setter correspondant à l'attribut.
 			$method = 'set'.ucfirst($key);
 

@@ -1,17 +1,26 @@
 <?php
 
 require_once 'Framework/Model.php';
+require_once 'Model/Entity/Post.php';
 
 class PostsManager extends Model
 {
+    /**
+     * 
+     * @return array|Post
+     */
     public function getList()
     {
         $sql = 'SELECT id, title, chapo, date_creation, date_update, user_id, content FROM post ORDER BY date_creation DESC';
         $posts = $this->executeRequest($sql);
-
-        return $posts;
+        $postsTab = [];
+        while ($data = $posts->fetch(PDO::FETCH_ASSOC))
+        {
+            array_push($postsTab, new Post($data));
+        }
+        return $postsTab;
     }
-
+    
     public function get($idPost)
     {
         $sql = 'SELECT id, title, chapo, date_creation, date_update, user_id, content FROM post WHERE id = ?';
@@ -19,12 +28,12 @@ class PostsManager extends Model
 
         if ($post->rowCount() > 0)
         {
-            $data = $post->fetch(PDO::FETCH_ASSOC); // RÈcupÈration du resultat de la requÍte en un tableau associatif.
-            return new Post($data); // Renvoi un objet Post crÈe ‡ partir des donnÈes.
+            $data = $post->fetch(PDO::FETCH_ASSOC); // R√©cup√©ration du resultat de la requ√™te en un tableau associatif.
+            return new Post($data); // Renvoi un objet Post cr√©e √† partir des donn√©es.
         }
         else
         {
-            throw new Exception("Aucun post ne correspond ‡ l'identifiant '$idPost'");
+            throw new Exception("Aucun post ne correspond √† l'identifiant '$idPost'");
         }
     }
 

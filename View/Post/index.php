@@ -36,7 +36,7 @@
       <p>Réponses à "<?= $this->sanitize($post->getTitle()) ?>" :</p>
 <!-- Affichage des commenaires -->
 <?php foreach ($comments as $comment): ?>
-    <p><?= $this->sanitize($comment->getUserId()) ?> a dit :</p>
+    <p><?= $this->sanitize($comment->getUserId()) ?> a commenté le <?= $this->sanitize($comment->getDateCreation()) ?> :</p>
     <p><?= $this->sanitize($comment->getContent()) ?></p>
 <?php endforeach; ?>
     </div>

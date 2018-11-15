@@ -43,7 +43,7 @@ class View
     {
         if (file_exists($file)) 
         {
-            // Rend les éléments du tableau $donnees accessibles dans la vue
+            // Rend les éléments du tableau $data accessibles dans la vue
             extract($data);
             // Démarrage de la temporisation de sortie
             ob_start();

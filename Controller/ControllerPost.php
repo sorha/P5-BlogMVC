@@ -1,9 +1,9 @@
 <?php
 
-require_once 'Model/Manager/PostsManager.php';
-require_once 'Model/Manager/CommentsManager.php';
-require_once 'Model/Entity/Comment.php';
-require_once 'Framework/Controller.php';
+//require_once 'Model/Manager/PostsManager.php';
+//require_once 'Model/Manager/CommentsManager.php';
+//require_once 'Model/Entity/Comment.php';
+//require_once 'Framework/Controller.php';
 
 class ControllerPost extends Controller
 {

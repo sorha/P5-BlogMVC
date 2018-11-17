@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Framework/Controller.php';
-require_once 'Framework/Configuration.php';
+//require_once 'Framework/Controller.php';
+//require_once 'Framework/Configuration.php';
 
 class ControllerContact extends Controller
 {

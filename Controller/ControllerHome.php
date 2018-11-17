@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Framework/Controller.php';
+//require_once 'Framework/Controller.php';
 
 class ControllerHome extends Controller
 {

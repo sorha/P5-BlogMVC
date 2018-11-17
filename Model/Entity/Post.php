@@ -1,5 +1,5 @@
 <?php
-require_once 'Framework/Entity.php';
+//require_once 'Framework/Entity.php';
 //TODO Vérification du type/formatage des données dans les setters.
 class Post extends Entity
 {

@@ -1,6 +1,7 @@
 <?php
 
-require_once 'Framework/Model.php';
+//require_once 'Framework/Model.php';
+//require_once 'Model/Entity/Comment.php';
 
 class CommentsManager extends Model
 {
@@ -9,21 +10,21 @@ class CommentsManager extends Model
         $sql = 'SELECT id, content, date_creation, user_id, post_id FROM comment WHERE post_id = ? ORDER BY date_creation DESC';
         $comments = $this->executeRequest($sql, array($idPost));
 
-        /*TODO Que faire si l'id du post existe mais qu'il n'y a aucun commentaire associé au post ?
-        Renvoyer un tableau vide ? Crér une méthode qui verifie que le post existe ? */
-        if ($comments->rowCount() > 0) // Si la requête a renvoyer au moins une ligne
+        /*TODO Que faire si l'id du post existe mais qu'il n'y a aucun commentaire associï¿½ au post ?
+        Renvoyer un tableau vide ? Crï¿½r une mï¿½thode qui verifie que le post existe ? */
+        if ($comments->rowCount() > 0) // Si la requï¿½te a renvoyer au moins une ligne
         {
             $commentsTab = [];
-            while ($data = $comments->fetch(PDO::FETCH_ASSOC)) // Tant qu'il y'a des lignes qui doivent être fetch, les placer dans $data.
+            while ($data = $comments->fetch(PDO::FETCH_ASSOC)) // Tant qu'il y'a des lignes qui doivent ï¿½tre fetch, les placer dans $data.
             {
-                $commentsTab[] = new Comment($data); // Rajouter un nouvel objet Comment crée à partir des donnees dans le tableau $commentsTab
+                $commentsTab[] = new Comment($data); // Rajouter un nouvel objet Comment crï¿½e ï¿½ partir des donnees dans le tableau $commentsTab
             }
 
             return $commentsTab; // Renvoi un tableau d'objet Comment
         }
         else
         {
-            throw new Exception("Aucun post ne correspond à l'identifiant '$idPost'");
+            throw new Exception("Aucun post ne correspond ï¿½ l'identifiant '$idPost'");
         }
     }
 
@@ -39,7 +40,7 @@ class CommentsManager extends Model
         }
         else
         {
-            throw new Exception("Aucun commentaire ne correspond à l'identifiant '$id'");
+            throw new Exception("Aucun commentaire ne correspond ï¿½ l'identifiant '$id'");
         }
     }
 

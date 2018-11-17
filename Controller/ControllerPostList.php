@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Model/Manager/PostsManager.php';
-require_once 'Framework/Controller.php';
+//require_once 'Model/Manager/PostsManager.php';
+//require_once 'Framework/Controller.php';
 
 class ControllerPostList extends Controller
 {

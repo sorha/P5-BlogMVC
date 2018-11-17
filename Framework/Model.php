@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Configuration.php';
+//require_once 'Configuration.php';
 
 /**
  * Classe abstraite Modèle.

@@ -1,6 +1,7 @@
 <?php
 
-require_once 'Framework/Model.php';
+//require_once 'Framework/Model.php';
+//require_once 'Model/Entity/User.php';
 
 class UsersManager extends Model
 {
@@ -10,9 +11,9 @@ class UsersManager extends Model
         $users = $this->executeRequest($sql);
 
         $usersTab = [];
-        while ($data = $users->fetch(PDO::FETCH_ASSOC)) // Tant qu'il y'a des lignes qui doivent être fetch, les placer dans $data.
+        while ($data = $users->fetch(PDO::FETCH_ASSOC)) // Tant qu'il y'a des lignes qui doivent ï¿½tre fetch, les placer dans $data.
         {
-            $usersTab[] = new User($data); // Rajouter un nouvel objet User crée à partir des donnees dans le tableau $usersTab
+            $usersTab[] = new User($data); // Rajouter un nouvel objet User crï¿½e ï¿½ partir des donnees dans le tableau $usersTab
         }
 
         return $usersTab; // Renvoi un tableau d'objet User
@@ -30,7 +31,7 @@ class UsersManager extends Model
         }
         else
         {
-            throw new Exception("Aucun utilisateur ne correspond à l'identifiant '$id'");
+            throw new Exception("Aucun utilisateur ne correspond ï¿½ l'identifiant '$id'");
         }
     }
 

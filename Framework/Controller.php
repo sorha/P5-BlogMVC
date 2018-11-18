@@ -1,7 +1,6 @@
 <?php
 
-require_once 'Request.php';
-require_once 'View.php';
+namespace Sorha\Framework;
 
 /**
  * Classe abstraite Controleur
@@ -28,7 +27,7 @@ abstract class Controller
      * Exécute l'action à réaliser.
      * Appelle la méthode portant le même nom que l'action sur l'objet Controleur courant
      * 
-     * @throws Exception Si l'action n'existe pas dans la classe Controleur courante
+     * @throws \Exception Si l'action n'existe pas dans la classe Controleur courante
      */
 	public function executeAction($action) 
 	{
@@ -40,7 +39,7 @@ abstract class Controller
 		else 
 		{
 			$classController = get_class($this);
-			throw new Exception("Action '$action' non définie dans la classe $classController");
+			throw new \Exception("Action '$action' non définie dans la classe $classController");
 		}
 	}
 

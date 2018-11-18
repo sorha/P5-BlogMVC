@@ -1,7 +1,11 @@
 <?php
 
-require_once 'Framework/Model.php';
-require_once 'Model/Entity/Post.php';
+namespace BlogMVC\Model\Manager;
+
+use \Sorha\Framework\Model;
+use \BlogMVC\Model\Entity\Post;
+
+//require_once 'Model/Entity/Post.php';
 
 class PostsManager extends Model
 {
@@ -14,7 +18,7 @@ class PostsManager extends Model
         $sql = 'SELECT id, title, chapo, date_creation, date_update, user_id, content FROM post ORDER BY date_creation DESC';
         $posts = $this->executeRequest($sql);
         $postsTab = [];
-        while ($data = $posts->fetch(PDO::FETCH_ASSOC))
+        while ($data = $posts->fetch(\PDO::FETCH_ASSOC))
         {
             array_push($postsTab, new Post($data));
         }
@@ -28,12 +32,12 @@ class PostsManager extends Model
 
         if ($post->rowCount() > 0)
         {
-            $data = $post->fetch(PDO::FETCH_ASSOC); // Récupération du resultat de la requête en un tableau associatif.
+            $data = $post->fetch(\PDO::FETCH_ASSOC); // Récupération du resultat de la requête en un tableau associatif.
             return new Post($data); // Renvoi un objet Post crée à partir des données.
         }
         else
         {
-            throw new Exception("Aucun post ne correspond à l'identifiant '$idPost'");
+            throw new \Exception("Aucun post ne correspond à l'identifiant '$idPost'");
         }
     }
 

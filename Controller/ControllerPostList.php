@@ -1,7 +1,9 @@
 <?php
 
-require_once 'Model/Manager/PostsManager.php';
-require_once 'Framework/Controller.php';
+//namespace BlogMVC\Controller;     Pas le droit de mettre de namespace sinon la creation dynamique de contrôleur dans le Router du Framework ne fonctionne plus
+
+use \Sorha\Framework\Controller;
+use \BlogMVC\Model\Manager\PostsManager;
 
 class ControllerPostList extends Controller
 {

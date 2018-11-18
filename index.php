@@ -1,6 +1,10 @@
 <?php
 // Contrôleur frontal : instancie un routeur pour traiter la requête entrante
-require_once 'Framework/Router.php';
+// Utilisation de l'autoloader de composer
+require_once 'vendor/autoload.php';
+
+use \Sorha\Framework\Router;
 
 $router = new Router();
 $router->routingRequest();
+

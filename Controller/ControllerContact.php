@@ -1,7 +1,9 @@
 <?php
 
-require_once 'Framework/Controller.php';
-require_once 'Framework/Configuration.php';
+//namespace BlogMVC\Controller;     Pas le droit de mettre de namespace sinon la creation dynamique de contrôleur dans le Router du Framework ne fonctionne plus
+
+use \Sorha\Framework\Controller;
+use \Sorha\Framework\Configuration;
 
 class ControllerContact extends Controller
 {

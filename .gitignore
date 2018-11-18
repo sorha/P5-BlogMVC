@@ -3,3 +3,6 @@
 .project
 .settings/
 desktop.ini
+
+# Dependancy folder. Need to run 'composer install' to download
+vendor/

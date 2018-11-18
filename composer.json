@@ -1,0 +1,12 @@
+{
+	"require" : {
+		"twig/twig" : "^1.35"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Sorha\\Framework\\" : "Framework",
+			"BlogMVC\\Model\\Entity\\" : "Model/Entity",
+			"BlogMVC\\Model\\Manager\\" : "Model/Manager"
+		}
+	}
+}

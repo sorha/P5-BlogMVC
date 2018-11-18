@@ -1,5 +1,7 @@
 <?php
 
+namespace Sorha\Framework;
+
 class Configuration 
 {
 
@@ -33,7 +35,7 @@ class Configuration
 
 			if (!file_exists($pathFile))
 			{
-				throw new Exception("Aucun fichier de configuration trouvé");
+				throw new \Exception("Aucun fichier de configuration trouvé");
 			}
 			else
 			{

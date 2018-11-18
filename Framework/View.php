@@ -1,6 +1,7 @@
 <?php
 
-//require_once 'Configuration.php';
+namespace Sorha\Framework;
+
 /**
  * Classe modélisant une vue
  *
@@ -55,7 +56,7 @@ class View
         }
         else 
         {
-            throw new Exception("Fichier '$file' introuvable");
+            throw new \Exception("Fichier '$file' introuvable");
         }
     }
 

@@ -1,7 +1,9 @@
 <?php
 
-//require_once 'Framework/Model.php';
-//require_once 'Model/Entity/Comment.php';
+namespace BlogMVC\Model\Manager;
+
+use \Sorha\Framework\Model;
+use \BlogMVC\Model\Entity\Comment;
 
 class CommentsManager extends Model
 {
@@ -15,7 +17,7 @@ class CommentsManager extends Model
         if ($comments->rowCount() > 0) // Si la requ�te a renvoyer au moins une ligne
         {
             $commentsTab = [];
-            while ($data = $comments->fetch(PDO::FETCH_ASSOC)) // Tant qu'il y'a des lignes qui doivent �tre fetch, les placer dans $data.
+            while ($data = $comments->fetch(\PDO::FETCH_ASSOC)) // Tant qu'il y'a des lignes qui doivent �tre fetch, les placer dans $data.
             {
                 $commentsTab[] = new Comment($data); // Rajouter un nouvel objet Comment cr�e � partir des donnees dans le tableau $commentsTab
             }
@@ -24,7 +26,7 @@ class CommentsManager extends Model
         }
         else
         {
-            throw new Exception("Aucun post ne correspond � l'identifiant '$idPost'");
+            throw new \Exception("Aucun post ne correspond � l'identifiant '$idPost'");
         }
     }
 
@@ -35,12 +37,12 @@ class CommentsManager extends Model
 
         if ($comment->rowCount() > 0)
         {
-            $data = $comment->fetch(PDO::FETCH_ASSOC);
+            $data = $comment->fetch(\PDO::FETCH_ASSOC);
             return new Comment($data);
         }
         else
         {
-            throw new Exception("Aucun commentaire ne correspond � l'identifiant '$id'");
+            throw new \Exception("Aucun commentaire ne correspond � l'identifiant '$id'");
         }
     }
 

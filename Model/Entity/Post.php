@@ -1,5 +1,8 @@
 <?php
-//require_once 'Framework/Entity.php';
+
+namespace BlogMVC\Model\Entity;
+
+use Sorha\Framework\Entity;
 //TODO Vérification du type/formatage des données dans les setters.
 class Post extends Entity
 {

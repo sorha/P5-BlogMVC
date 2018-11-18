@@ -61,7 +61,7 @@
         </div>
         <br>
         
-        <input type="hidden" name="id" value="<?= $this->sanitize($post->getId()) ?>" required/>
+        <input type="hidden" name="id" value="<?php $this->sanitize($post->getId()) ?>" required/>
         
         <div id="success"></div>
         <div class="form-group">

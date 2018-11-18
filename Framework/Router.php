@@ -1,8 +1,6 @@
 <?php
 
-//require_once 'Controller.php';
-//require_once 'Request.php';
-//require_once 'View.php';
+namespace Sorha\Framework;
 
 class Router 
 {    
@@ -19,7 +17,7 @@ class Router
 
             $controller->executeAction($action);
         }
-        catch (Exception $e) 
+        catch (\Exception $e) 
         {
             $this->error($e);
         }
@@ -28,9 +26,9 @@ class Router
     /**
      * Gère une erreur d'exécution (exception)
      * 
-     * @param Exception $exception Exception qui s'est produite
+     * @param \Exception $exception Exception qui s'est produite
      */
-    private function error(Exception $exception)
+    private function error(\Exception $exception)
     {
         $view = new View("Error");
         $view->generate(array('msgError' => $exception->getMessage()));
@@ -53,14 +51,14 @@ class Router
         if (file_exists($fileController))
         {
             // Instanciation du contrôleur adapté à la requête
-            require($fileController);
+            require_once($fileController);
             $controller = new $classController();
             $controller->setRequest($request);
             return $controller;
         }
         else
         {
-            throw new Exception("Fichier '$fileController' introuvable");
+            throw new \Exception("Fichier '$fileController' introuvable");
         }
     }
 

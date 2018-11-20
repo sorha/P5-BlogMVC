@@ -1,4 +1,4 @@
-<?php $this->title = "Mon Blog" ?>
+<?php $this->title = "Mon Blog - Accueil" ?>
 
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('Content/startbootstrap-clean-blog-gh-pages/img/home-bg.jpg')">
@@ -9,6 +9,9 @@
         <div class="site-heading">
           <h1>Alex Depra</h1>
           <span class="subheading">Un Blog MVC POO</span>
+          <p>
+          	<a href="Content/CV.pdf" target="_blank" class="btn btn-success" alt="Bouton Telechargement CV">Telecharger mon CV !</a>
+          </p>
         </div>
       </div>
     </div>

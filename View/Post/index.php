@@ -1,5 +1,13 @@
 <?php $this->title = "Mon Blog - " . $this->sanitize($post->getTitle()) ?>
 
+  	<!-- Debug -->
+    <?php if(isset($_SESSION['username'])) { ?>
+        <div class="alert alert-success" style="position:fixed; right:0; bottom:0; width:500px; z-index:100;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    	  <?= var_dump($post) ?>
+    	</div>
+    <?php } ?>
+
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('Content/startbootstrap-clean-blog-gh-pages/img/post-bg.jpg')">
   <div class="overlay"></div>
@@ -11,7 +19,7 @@
           <h2 class="subheading"><?= $this->sanitize($post->getChapo()) ?></h2>
           <span class="meta">Posté par
             <a href="#"><?= $this->sanitize($post->getUserId()) ?></a>
-            le <time><?= $this->sanitize($post->getDateCreation()) ?></time> | Mise à jour le <time><?= $this->sanitize($post->getDateUpdate()) ?></time></span>
+            le <time><?= $this->sanitize($post->getFormattedDateCreation()) ?></time> | Mise à jour le <time><?= $this->sanitize($post->getDateUpdate()) ?></time></span>
         </div>
       </div>
     </div>
@@ -36,7 +44,7 @@
       <p>Réponses à "<?= $this->sanitize($post->getTitle()) ?>" :</p>
 <!-- Affichage des commenaires -->
 <?php foreach ($comments as $comment): ?>
-    <p><?= $this->sanitize($comment->getUserId()) ?> a commenté le <?= $this->sanitize($comment->getDateCreation()) ?> :</p>
+    <p><?= $this->sanitize($comment->getUserId()) ?> a commenté le <?= $this->sanitize($comment->getFormattedDateCreation()) ?> :</p>
     <p><?= $this->sanitize($comment->getContent()) ?></p>
 <?php endforeach; ?>
     </div>
@@ -61,11 +69,11 @@
         </div>
         <br>
         
-        <input type="hidden" name="id" value="<?php $this->sanitize($post->getId()) ?>" required/>
+        <input type="hidden" name="postId" value="<?= $this->sanitize($post->getId()) ?>" required/>
         
         <div id="success"></div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary" id="sendMessageButton">Commenter</button>
+          <button type="submit" value="submitted" class="btn btn-primary" id="sendMessageButton">Commenter</button>
         </div>
         
       </form>

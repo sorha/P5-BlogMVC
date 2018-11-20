@@ -4,7 +4,6 @@ namespace BlogMVC\Model\Entity;
 
 use \Sorha\Framework\Entity;
 
-//TODO Vérification du type/formatage des données dans les setters.
 class Comment extends Entity
 {
     private $id;
@@ -15,9 +14,11 @@ class Comment extends Entity
 
     public function getId() { return $this->id; }
     public function getContent() { return $this->content; }
-    public function getDateCreation() { return $this->getFormattedDateTime($this->dateCreation); }
+    public function getDateCreation() { return $this->dateCreation; }
     public function getUserId() { return $this->userId; }
     public function getPostId() { return $this->postId; }
+    
+    public function getFormattedDateCreation() { return $this->getFormattedDateTime($this->dateCreation); }
 
     public function setId($id) 
     {

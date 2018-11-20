@@ -7,8 +7,8 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading">
-          <h1>Alex Depra</h1>
-          <span class="subheading">Un Blog MVC POO</span>
+          <h1>Liste des posts</h1>
+          <span class="subheading">Voici la liste des postes triés par date !</span>
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
     </a>
     <p class="post-meta">Posté par
       <a href="#"><?= $this->sanitize($post->getUserId()) ?></a>
-      le <time><?= $this->sanitize($post->getDateCreation()) ?></time> | Mise à jour le <time><?= $this->sanitize($post->getDateUpdate()) ?></time></p>
+      le <time><?= $this->sanitize($post->getFormattedDateCreation()) ?></time> | Mise à jour le <time><?= $this->sanitize($post->getDateUpdate()) ?></time></p>
   </div>
   <hr>
 <?php endforeach; ?>

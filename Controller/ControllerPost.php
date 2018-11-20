@@ -21,8 +21,8 @@ class ControllerPost extends Controller
 	// Ajoute un commentaire au post
 	public function addComment()
 	{
-		$postId = $this->request->getParameter("id");
-        $userId = $this->request->getParameter("userId");
+		$postId = $this->request->getParameter("postId");
+		$userId = $this->request->getSession()->getAttribute("userId");
         $content = $this->request->getParameter("content");
 
         // Création d'un nouvel objet Comment
@@ -31,14 +31,13 @@ class ControllerPost extends Controller
         $this->commentsManager->add($comment);
         
         // Exécution de l'action par défaut pour réafficher la liste des billets
-        $this->executerAction("index");
+        $this->executeAction("index");
 	}
 
 	// Action par défaut : Affiche les détails d'un post précis par
 	public function index()
 	{
 		$postId = $this->request->getParameter("id");
-        
         $post = $this->postsManager->get($postId);
         $comments = $this->commentsManager->getList($postId);
         

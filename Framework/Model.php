@@ -42,7 +42,7 @@ abstract class Model
      */
     private static function getDb()
     {
-        if (self::$db == null)
+        if (self::$db === null)
         {
             // Récupération des paramètres de configuration BD
             $dsn = Configuration::get("dsn");

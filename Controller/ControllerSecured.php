@@ -1,6 +1,6 @@
 <?php
 
-namespace Sorha\Framework;
+use \Sorha\Framework\Controller;
 
 /** Classe parente des contrôleurs soumis à l'authentification */
 abstract class ControllerSecured extends Controller
@@ -15,6 +15,10 @@ abstract class ControllerSecured extends Controller
             if ($this->request->getSession()->getAttribute("userType") === 'admin')
             {
                 parent::executeAction($action);
+            }
+            else
+            {
+                $this->redirect("Login");
             }
         }
         else 

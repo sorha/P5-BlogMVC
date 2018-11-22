@@ -1,5 +1,4 @@
 <?php
-
 namespace Sorha\Framework;
 
 // A pour rôle de modéliser une requête
@@ -24,7 +23,7 @@ class Request
 	// Renvoie vrai si le paramètre existe dans la requête
 	public function existsParameter($name)
 	{
-		return (isset($this->parameters[$name]) && $this->parameters[$name] != "");
+		return (!empty($this->parameters[$name]));
 	}
 
 	// Renvoie la valeur du paramètre demandé

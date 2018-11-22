@@ -1,13 +1,5 @@
 <?php $this->title = "Mon Blog - " . $this->sanitize($post->getTitle()) ?>
 
-  	<!-- Debug -->
-    <?php if(isset($_SESSION['username'])) { ?>
-        <div class="alert alert-success" style="position:fixed; right:0; bottom:0; width:500px; z-index:100;">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    	  <?= var_dump($post) ?>
-    	</div>
-    <?php } ?>
-
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('Content/startbootstrap-clean-blog-gh-pages/img/post-bg.jpg')">
   <div class="overlay"></div>
@@ -52,24 +44,27 @@
 </div>
 
 <hr />
-
+<?php 
+    if(isset($_SESSION['userType']))
+    {
+?>
 <!-- Ajout d'un commentaire -->
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
       <p>Ajouter un commentaire :</p>
-      <form methode="post" action="post/addComment" name="sentMessage" id="contactForm" novalidate>
+      <form method="post" action="post/addComment" name="sentMessage" id="commentForm" novalidate>
         
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label>Votre commentaire</label>
-            <textarea name="content" rows="5" class="form-control" placeholder="Votre commentaire" id="message" required data-validation-required-message="Please enter a message."></textarea>
+            <textarea name="content" rows="5" class="form-control" placeholder="Votre commentaire" id="content" required data-validation-required-message="Please enter a message."></textarea>
             <p class="help-block text-danger"></p>
           </div>
         </div>
         <br>
         
-        <input type="hidden" name="postId" value="<?= $this->sanitize($post->getId()) ?>" required/>
+        <input type="hidden" name="id" value="<?= $this->sanitize($post->getId()) ?>" required/>
         
         <div id="success"></div>
         <div class="form-group">
@@ -80,3 +75,19 @@
     </div>
   </div>
 </div>
+<?php 
+    }
+    else 
+    {
+        
+?>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <p>Veuillez vous connectez pour publier un commentaire</p>
+    </div>
+  </div>
+</div>
+<?php 
+    }
+?>

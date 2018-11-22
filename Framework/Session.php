@@ -52,7 +52,8 @@ class Session
      */
     public function getAttribute($name)
     {
-        if ($this->existsAttribute($name)) {
+        if ($this->existsAttribute($name)) 
+        {
             return $_SESSION[$name];
         }
         else {

@@ -38,8 +38,12 @@ class ControllerLogin extends Controller
                         $this->request->getSession()->setAttribute("userType", 'admin');
                         $this->redirect("Admin");
                     }
-                    $this->request->getSession()->setAttribute("userType", 'member');
-                    $this->redirect("Home");
+                    else
+                    {
+                        $this->request->getSession()->setAttribute("userType", 'member');
+                        $this->redirect("Home");
+                    }
+
                 }
                 else
                 {

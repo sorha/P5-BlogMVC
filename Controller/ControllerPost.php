@@ -21,7 +21,7 @@ class ControllerPost extends Controller
 	// Ajoute un commentaire au post
 	public function addComment()
 	{
-		$postId = $this->request->getParameter("postId");
+		$postId = $this->request->getParameter("id");
 		$userId = $this->request->getSession()->getAttribute("userId");
         $content = $this->request->getParameter("content");
 
@@ -29,7 +29,6 @@ class ControllerPost extends Controller
 		$comment = new Comment(array('content' => $content, 'dateCreation' => date('Y-m-d H:i:s'), 'userId' => $userId, 'postId' => $postId));
 		// Ajout de l'objet Comment dans la base de données
         $this->commentsManager->add($comment);
-        
         // Exécution de l'action par défaut pour réafficher la liste des billets
         $this->executeAction("index");
 	}

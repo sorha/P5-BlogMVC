@@ -29,7 +29,7 @@ abstract class Controller
      * 
      * @throws \Exception Si l'action n'existe pas dans la classe Controleur courante
      */
-	public function executeAction($action) 
+	public function executeAction($action)
 	{
 		if (method_exists($this, $action)) // Verifie si une méthode qui se nomme $action existe dans la classe actuelle.
 		{

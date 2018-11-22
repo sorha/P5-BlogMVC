@@ -22,10 +22,10 @@
 
   <body>
   	<!-- Debug -->
-    <?php if(isset($_SESSION['username'])) { ?>
+    <?php if(!empty($_SESSION['username'])) { ?>
         <div class="alert alert-success" style="position:fixed; left:0; bottom:0; z-index:100;">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    	  <?= var_dump($_SESSION) ?>Connecté en tant que <strong><?= $_SESSION['username'] . ' - ' . ucfirst($_SESSION['userType']) ?></strong>
+    	  Connecté en tant que <strong><?= $_SESSION['username'] . ' </strong><br />Vous êtes <strong>' . ucfirst($_SESSION['userType'])?></strong>
     	</div>
     <?php } ?>
     
@@ -48,18 +48,46 @@
             <li class="nav-item">
               <a class="nav-link" href="contact">Contact</a>
             </li>
+            <?php
+            if(isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin')
+            {
+            ?>  
             <li class="nav-item">
               <a class="nav-link" href="admin">Administration</a>
             </li>
+            <?php 
+            }
+            ?>
+            <?php
+            if(!isset($_SESSION['userType']))
+            {
+            ?>  
             <li class="nav-item">
               <a class="nav-link" href="registration">Inscription</a>
             </li>
+            <?php
+            }
+            ?>
+            <?php
+            if(!isset($_SESSION['userType']))
+            {
+            ?>  
             <li class="nav-item">
               <a class="nav-link" href="login">Connexion</a>
             </li>
+            <?php
+            }
+            ?>
+            <?php
+            if(isset($_SESSION['userType']))
+            {
+            ?>  
             <li class="nav-item">
               <a class="nav-link" href="login/logout">Deconnexion</a>
             </li>
+            <?php
+            }
+            ?>  
           </ul>
         </div>
       </div>

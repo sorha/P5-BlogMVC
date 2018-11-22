@@ -30,7 +30,7 @@ class PostsManager extends Model
         $sql = 'SELECT id, title, chapo, date_creation, date_update, user_id, content FROM post WHERE id = ?';
         $post = $this->executeRequest($sql, array($idPost));
 
-        if ($post->rowCount() > 0)
+        if ($post->rowCount() == 1)
         {
             $data = $post->fetch(\PDO::FETCH_ASSOC); // Récupération du resultat de la requête en un tableau associatif.
             return new Post($data); // Renvoi un objet Post crée à partir des données.
@@ -57,5 +57,15 @@ class PostsManager extends Model
     {
         $sql = 'UPDATE post SET title = ?, chapo = ?, date_creation = ?, user_id = ?, content = ? WHERE id = ?';
         $this->executeRequest($sql, array($post->getTitle(), $post->getChapo(), $post->getDateCreation(), $post->getUserId(), $post->getContent(), $post->getId() ));
+    }
+    
+    /** Renvoi le nombre de posts du site */
+    public function count()
+    {
+        $sql = 'SELECT COUNT(*) as numberPosts FROM post';
+        $result = $this->executeRequest($sql);
+        $line = $result->fetch(); // Resultat comporte toujours une ligne
+        
+        return $line['numberPosts'];
     }
 }

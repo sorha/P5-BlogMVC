@@ -10,7 +10,8 @@ class Router
         try 
         {
             // Fusion des paramètres GET et POST de la requête
-            $request = new Request(array_merge($_GET, $_POST));
+            // La création d'une requête crée également une session
+            $request = new Request($_REQUEST);
 
             $controller = $this->createController($request);
             $action  = $this->createAction($request);

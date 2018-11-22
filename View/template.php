@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Blog MVC POO - Projet 5 de mon parcours Développeur d'application PHP / Symfony chez OpenClassrooms">
@@ -19,10 +18,17 @@
 
     <!-- Custom styles for this template -->
     <link href="Content/startbootstrap-clean-blog-gh-pages/css/clean-blog.min.css" rel="stylesheet">
-
   </head>
 
   <body>
+  	<!-- Debug -->
+    <?php if(!empty($_SESSION['username'])) { ?>
+        <div class="alert alert-success" style="position:fixed; left:0; bottom:0; z-index:100;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    	  Connecté en tant que <strong><?= $_SESSION['username'] . ' </strong><br />Vous êtes <strong>' . ucfirst($_SESSION['userType'])?></strong>
+    	</div>
+    <?php } ?>
+    
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
@@ -42,15 +48,46 @@
             <li class="nav-item">
               <a class="nav-link" href="contact">Contact</a>
             </li>
+            <?php
+            if(isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin')
+            {
+            ?>  
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Administration</a>
+              <a class="nav-link" href="admin">Administration</a>
             </li>
+            <?php 
+            }
+            ?>
+            <?php
+            if(!isset($_SESSION['userType']))
+            {
+            ?>  
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Inscription</a>
+              <a class="nav-link" href="registration">Inscription</a>
             </li>
+            <?php
+            }
+            ?>
+            <?php
+            if(!isset($_SESSION['userType']))
+            {
+            ?>  
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Connexion</a>
+              <a class="nav-link" href="login">Connexion</a>
             </li>
+            <?php
+            }
+            ?>
+            <?php
+            if(isset($_SESSION['userType']))
+            {
+            ?>  
+            <li class="nav-item">
+              <a class="nav-link" href="login/logout">Deconnexion</a>
+            </li>
+            <?php
+            }
+            ?>  
           </ul>
         </div>
       </div>

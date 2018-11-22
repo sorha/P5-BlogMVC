@@ -5,10 +5,20 @@ namespace BlogMVC\Model\Manager;
 use \Sorha\Framework\Model;
 use \BlogMVC\Model\Entity\User;
 
-//require_once 'Model/Entity/User.php';
-
 class UsersManager extends Model
 {
+    public function login($username, $password)
+    {
+        $sql = "SELECT id, password FROM user WHERE username = ?";
+        $user = $this->executeRequest($sql, array($username));
+        if($user->rowCount() == 1)
+        {
+            $user = $user->fetch(\PDO::FETCH_ASSOC);
+            // Renvoi vrai si le mdp correspond
+            return (password_verify($password, $user['password']));
+        }
+    }
+    
     public function getList()
     {
         $sql = 'SELECT id, username, email, password, activated, validation_key, user_type, date_creation FROM user ORDER BY date_creation DESC';
@@ -22,20 +32,26 @@ class UsersManager extends Model
 
         return $usersTab; // Renvoi un tableau d'objet User
     }
-
-    public function get($id)
+    /**
+     * Renvoi un objet User qui existe dans la base de données.
+     * 
+     * @param int $id
+     * @throws \Exception Si aucune identifiant ne correspond un utilisateur dans la base de données
+     * @return \BlogMVC\Model\Entity\User Un objet User
+     */
+    public function get($username)
     {
-        $sql = 'SELECT id, username, email, password, activated, validation_key, user_type, date_creation FROM user WHERE id = ?';
-        $user = $this->executeRequest($sql, array($id));
+        $sql = 'SELECT id, username, email, password, activated, validation_key, user_type, date_creation FROM user WHERE username = ?';
+        $user = $this->executeRequest($sql, array($username));
 
-        if ($user->rowCount() > 0)
+        if ($user->rowCount() == 1)
         {
             $data = $user->fetch(\PDO::FETCH_ASSOC);
             return new User($data);
         }
         else
         {
-            throw new \Exception("Aucun utilisateur ne correspond � l'identifiant '$id'");
+            throw new \Exception("Aucun utilisateur ne correspond à l'identifiant '$username'");
         }
     }
 

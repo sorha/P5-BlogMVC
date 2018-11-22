@@ -29,7 +29,7 @@ abstract class Controller
      * 
      * @throws \Exception Si l'action n'existe pas dans la classe Controleur courante
      */
-	public function executeAction($action) 
+	public function executeAction($action)
 	{
 		if (method_exists($this, $action)) // Verifie si une méthode qui se nomme $action existe dans la classe actuelle.
 		{
@@ -62,5 +62,17 @@ abstract class Controller
 		// Instanciation et génération de la vue
 		$view = new View($this->action, $controller);
 		$view->generate($dataView);
+	}
+	/**
+	 * Effectue une redirection vers un contrôleur et une action spécifiques
+	 * 
+	 * @param string $controller Controller
+	 * @param string $action Action Action
+	 */
+	protected function redirect($controller, $action = null)
+	{
+	    $rootWeb = Configuration::get("rootWeb", "/");
+	    // Redirection vers l'URL racine_site/controlller/action
+	    header("Location:" . $rootWeb . $controller . "/" . $action);
 	}
 }

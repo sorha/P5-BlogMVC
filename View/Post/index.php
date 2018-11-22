@@ -11,7 +11,7 @@
           <h2 class="subheading"><?= $this->sanitize($post->getChapo()) ?></h2>
           <span class="meta">Posté par
             <a href="#"><?= $this->sanitize($post->getUserId()) ?></a>
-            le <time><?= $this->sanitize($post->getDateCreation()) ?></time> | Mise à jour le <time><?= $this->sanitize($post->getDateUpdate()) ?></time></span>
+            le <time><?= $this->sanitize($post->getFormattedDateCreation()) ?></time> | Mise à jour le <time><?= $this->sanitize($post->getDateUpdate()) ?></time></span>
         </div>
       </div>
     </div>
@@ -36,7 +36,7 @@
       <p>Réponses à "<?= $this->sanitize($post->getTitle()) ?>" :</p>
 <!-- Affichage des commenaires -->
 <?php foreach ($comments as $comment): ?>
-    <p><?= $this->sanitize($comment->getUserId()) ?> a commenté le <?= $this->sanitize($comment->getDateCreation()) ?> :</p>
+    <p><?= $this->sanitize($comment->getUserId()) ?> a commenté le <?= $this->sanitize($comment->getFormattedDateCreation()) ?> :</p>
     <p><?= $this->sanitize($comment->getContent()) ?></p>
 <?php endforeach; ?>
     </div>
@@ -44,31 +44,50 @@
 </div>
 
 <hr />
-
+<?php 
+    if(isset($_SESSION['userType']))
+    {
+?>
 <!-- Ajout d'un commentaire -->
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
       <p>Ajouter un commentaire :</p>
-      <form methode="post" action="post/addComment" name="sentMessage" id="contactForm" novalidate>
+      <form method="post" action="post/addComment" name="sentMessage" id="commentForm" novalidate>
         
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label>Votre commentaire</label>
-            <textarea name="content" rows="5" class="form-control" placeholder="Votre commentaire" id="message" required data-validation-required-message="Please enter a message."></textarea>
+            <textarea name="content" rows="5" class="form-control" placeholder="Votre commentaire" id="content" required data-validation-required-message="Please enter a message."></textarea>
             <p class="help-block text-danger"></p>
           </div>
         </div>
         <br>
         
-        <input type="hidden" name="id" value="<?php $this->sanitize($post->getId()) ?>" required/>
+        <input type="hidden" name="id" value="<?= $this->sanitize($post->getId()) ?>" required/>
         
         <div id="success"></div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary" id="sendMessageButton">Commenter</button>
+          <button type="submit" value="submitted" class="btn btn-primary" id="sendMessageButton">Commenter</button>
         </div>
         
       </form>
     </div>
   </div>
 </div>
+<?php 
+    }
+    else 
+    {
+        
+?>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <p>Veuillez vous connectez pour publier un commentaire</p>
+    </div>
+  </div>
+</div>
+<?php 
+    }
+?>

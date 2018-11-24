@@ -15,7 +15,7 @@ class PostsManager extends Model
      */
     public function getList()
     {
-        $sql = 'SELECT id, title, chapo, date_creation, date_update, user_id, content FROM post ORDER BY date_creation DESC';
+        $sql = 'SELECT post.id, title, chapo, post.date_creation, post.date_update, user_id, content, user.username FROM post INNER JOIN user ON post.user_id=user.id ORDER BY date_creation DESC';
         $posts = $this->executeRequest($sql);
         $postsTab = [];
         while ($data = $posts->fetch(\PDO::FETCH_ASSOC))
@@ -27,7 +27,7 @@ class PostsManager extends Model
     
     public function get($idPost)
     {
-        $sql = 'SELECT id, title, chapo, date_creation, date_update, user_id, content FROM post WHERE id = ?';
+        $sql = 'SELECT post.id, title, chapo, post.date_creation, post.date_update, user_id, content, user.username FROM post INNER JOIN user ON post.user_id=user.id WHERE post.id = ?';
         $post = $this->executeRequest($sql, array($idPost));
 
         if ($post->rowCount() == 1)
@@ -55,8 +55,8 @@ class PostsManager extends Model
 
     public function update(Post $post)
     {
-        $sql = 'UPDATE post SET title = ?, chapo = ?, date_creation = ?, user_id = ?, content = ? WHERE id = ?';
-        $this->executeRequest($sql, array($post->getTitle(), $post->getChapo(), $post->getDateCreation(), $post->getUserId(), $post->getContent(), $post->getId() ));
+        $sql = 'UPDATE post SET title = ?, chapo = ?, content = ? WHERE id = ?';
+        $this->executeRequest($sql, array($post->getTitle(), $post->getChapo(), $post->getContent(), $post->getId() ));
     }
     
     /** Renvoi le nombre de posts du site */

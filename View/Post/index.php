@@ -1,7 +1,7 @@
 <?php $this->title = "Mon Blog - " . $this->sanitize($post->getTitle()) ?>
 
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('Content/startbootstrap-clean-blog-gh-pages/img/post-bg.jpg')">
+<header class="masthead" style="background-image: url('Content/startbootstrap-clean-blog-gh-pages/img/home-bg.jpg')">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
@@ -10,8 +10,10 @@
           <h1><?= $this->sanitize($post->getTitle()) ?></h1>
           <h2 class="subheading"><?= $this->sanitize($post->getChapo()) ?></h2>
           <span class="meta">Posté par
-            <a href="#"><?= $this->sanitize($post->getUserId()) ?></a>
-            le <time><?= $this->sanitize($post->getFormattedDateCreation()) ?></time> | Mise à jour le <time><?= $this->sanitize($post->getDateUpdate()) ?></time></span>
+            <a href="#"><?= $this->sanitize($post->getUsername()) ?></a>
+            le <time><?= $this->sanitize($post->getFormattedDateCreation()) ?></time>
+            <br />Dernière mise à jour le <time><?= $this->sanitize($post->getFormattedDateUpdate()) ?></time>
+          </span>
         </div>
       </div>
     </div>
@@ -29,21 +31,6 @@
   </div>
 </article>
 
-<!--  Commentaires -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      <p>Réponses à "<?= $this->sanitize($post->getTitle()) ?>" :</p>
-<!-- Affichage des commenaires -->
-<?php foreach ($comments as $comment): ?>
-    <p><?= $this->sanitize($comment->getUserId()) ?> a commenté le <?= $this->sanitize($comment->getFormattedDateCreation()) ?> :</p>
-    <p><?= $this->sanitize($comment->getContent()) ?></p>
-<?php endforeach; ?>
-    </div>
-  </div>
-</div>
-
-<hr />
 <?php 
     if(isset($_SESSION['userType']))
     {
@@ -58,7 +45,7 @@
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label>Votre commentaire</label>
-            <textarea name="content" rows="5" class="form-control" placeholder="Votre commentaire" id="content" required data-validation-required-message="Please enter a message."></textarea>
+            <textarea name="content" rows="3" class="form-control" placeholder="Votre commentaire" id="content" required data-validation-required-message="Please enter a message."></textarea>
             <p class="help-block text-danger"></p>
           </div>
         </div>
@@ -91,3 +78,25 @@
 <?php 
     }
 ?>
+<hr />
+
+<!--  Commentaires -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <p>Commentaires du post "<?= $this->sanitize($post->getTitle()) ?>" :</p>
+        <!-- Affichage des commenaires -->
+        <?php foreach ($comments as $comment): ?>
+            <div class="card bg-light mb-3">
+            	<div class="card-header">
+            		<?= $this->sanitize($comment->getUsername()) ?> a commenté le <?= $this->sanitize($comment->getFormattedDateCreation()) ?> :
+            	</div>
+          		<div class="card-body">
+                	<?= $this->sanitize($comment->getContent()) ?>
+                </div>
+            </div>
+            <br />
+        <?php endforeach; ?>
+    </div>
+  </div>
+</div>

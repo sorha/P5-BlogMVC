@@ -25,7 +25,7 @@ class User extends Entity
 	public function getDateCreation() { return $this->dateCreation; }
 	
 	public function getFormattedDateCreation() { return $this->getFormattedDateTime($this->dateCreation); }
-
+	
     public function setId($id) 
     {
     	$this->id = $id;

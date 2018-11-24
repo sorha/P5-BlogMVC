@@ -9,7 +9,7 @@ class CommentsManager extends Model
 {
     public function getList($idPost)
     {
-        $sql = 'SELECT id, content, date_creation, user_id, post_id FROM comment WHERE post_id = ? ORDER BY date_creation DESC';
+        $sql = 'SELECT comment.id, content, comment.date_creation, user_id, post_id, username, disabled FROM comment INNER JOIN user ON comment.user_id=user.id WHERE post_id = ? AND disabled = 0 ORDER BY comment.date_creation DESC';
         $comments = $this->executeRequest($sql, array($idPost));
 
         $commentsTab = [];
@@ -20,10 +20,24 @@ class CommentsManager extends Model
 
         return $commentsTab; // Renvoi un tableau d'objet Comment
     }
+    
+    public function getDisabledList()
+    {
+        $sql = 'SELECT comment.id, content, comment.date_creation, user_id, post_id, username, disabled FROM comment INNER JOIN user ON comment.user_id=user.id WHERE disabled = 1 ORDER BY comment.date_creation DESC';
+        $comments = $this->executeRequest($sql, array());
+        
+        $commentsTab = [];
+        while ($data = $comments->fetch(\PDO::FETCH_ASSOC)) // Tant qu'il y'a des lignes qui doivent �tre fetch, les placer dans $data.
+        {
+            $commentsTab[] = new Comment($data); // Rajouter un nouvel objet Comment cr�e � partir des donnees dans le tableau $commentsTab
+        }
+        
+        return $commentsTab; // Renvoi un tableau d'objet Comment
+    }
 
     public function get($id)
     {
-        $sql = 'SELECT id, content, date_creation, user_id, post_id FROM comment WHERE id = ?';
+        $sql = 'SELECT comment.id, content, comment.date_creation, user_id, post_id, username, disabled FROM comment INNER JOIN user ON comment.user_id=user.id WHERE comment.id = ?';
         $comment = $this->executeRequest($sql, array($id));
 
         if ($comment->rowCount() > 0)
@@ -51,7 +65,13 @@ class CommentsManager extends Model
 
     public function update(Comment $comment)
     {
-        $sql = 'UPDATE comment SET content = ?, date_creation = ?, user_id = ?, post_id = ? WHERE id = ?';
-        $this->executeRequest($sql, array($comment->getContent(), $comment->getDateCreation(), $comment->getUserId(), $comment->getPostId(), $comment->getId() ));
+        $sql = 'UPDATE comment SET content = ?, date_creation = ?, user_id = ?, post_id = ?, disabled = ? WHERE id = ?';
+        $this->executeRequest($sql, array($comment->getContent(), $comment->getDateCreation(), $comment->getUserId(), $comment->getPostId(), $comment->getDisabled(), $comment->getId() ));
+    }
+    
+    public function enable(Comment $comment)
+    {
+        $sql = 'UPDATE comment SET disabled = ? WHERE id= ?';
+        $this->executeRequest($sql, array($comment->getDisabled(), $comment->getId() ));
     }
 }

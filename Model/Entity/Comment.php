@@ -11,6 +11,8 @@ class Comment extends Entity
     private $dateCreation;
     private $userId;
     private $postId;
+    private $username;
+    private $disabled;
 
     public function getId() { return $this->id; }
     public function getContent() { return $this->content; }
@@ -19,6 +21,19 @@ class Comment extends Entity
     public function getPostId() { return $this->postId; }
     
     public function getFormattedDateCreation() { return $this->getFormattedDateTime($this->dateCreation); }
+    
+    public function getUsername() { return $this->username; }
+    public function getDisabled() { return $this->disabled; }
+    
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+    
+    public function setDisabled($disabled)
+    {
+        $this->disabled = $disabled;
+    }
 
     public function setId($id) 
     {

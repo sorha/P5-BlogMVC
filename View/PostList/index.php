@@ -32,8 +32,10 @@
       </h3>
     </a>
     <p class="post-meta">Posté par
-      <a href="#"><?= $this->sanitize($post->getUserId()) ?></a>
-      le <time><?= $this->sanitize($post->getFormattedDateCreation()) ?></time> | Mise à jour le <time><?= $this->sanitize($post->getDateUpdate()) ?></time></p>
+      <a href="#"><?= $this->sanitize($post->getUsername()) ?></a>
+      le <time><?= $this->sanitize($post->getFormattedDateCreation()) ?></time>
+      <br />Dernière mise à jour le <time><?= $this->sanitize($post->getFormattedDateUpdate()) ?></time>
+    </p>
   </div>
   <hr>
 <?php endforeach; ?>

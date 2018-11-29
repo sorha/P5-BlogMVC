@@ -68,10 +68,4 @@ class CommentsManager extends Model
         $sql = 'UPDATE comment SET content = ?, date_creation = ?, user_id = ?, post_id = ?, disabled = ? WHERE id = ?';
         $this->executeRequest($sql, array($comment->getContent(), $comment->getDateCreation(), $comment->getUserId(), $comment->getPostId(), $comment->getDisabled(), $comment->getId() ));
     }
-    
-    public function enable(Comment $comment)
-    {
-        $sql = 'UPDATE comment SET disabled = ? WHERE id= ?';
-        $this->executeRequest($sql, array($comment->getDisabled(), $comment->getId() ));
-    }
 }

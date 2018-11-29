@@ -45,7 +45,7 @@
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label>Votre commentaire</label>
-            <textarea name="content" rows="3" class="form-control" placeholder="Votre commentaire" id="content" required data-validation-required-message="Please enter a message."></textarea>
+            <textarea name="content" rows="3" class="form-control" placeholder="Votre commentaire" id="content" required data-validation-required-message="Veuillez renseigner ce champ."></textarea>
             <p class="help-block text-danger"></p>
           </div>
         </div>

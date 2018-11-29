@@ -4,5 +4,8 @@ RewriteEngine on
 # Validation du mail
 RewriteRule ^registration/validation/([a-zA-Z0-9]*)/([a-zA-Z0-9]*)$ index.php?controller=registration&action=validation&username=$1&key=$2 [NC,L]
 
+# Réinitialisation de mot de passe
+RewriteRule ^login/reset/([a-zA-Z0-9]*)/([a-zA-Z0-9]*)$ index.php?controller=login&action=reset&username=$1&key=$2 [NC,L]
+
 # Réécrit une URL de type xxx/yyy/zzz en index.php?controller=xxx&action=yyy&id=zzz
 RewriteRule ^([a-zA-Z]*)/?([a-zA-Z]*)?/?([a-zA-Z0-9]*)?/?$ index.php?controller=$1&action=$2&id=$3 [NC,L]

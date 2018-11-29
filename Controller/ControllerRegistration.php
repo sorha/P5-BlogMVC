@@ -65,10 +65,8 @@ class ControllerRegistration extends Controller
                                
                                '.Configuration::get("domain").'registration/validation/' . urlencode($username) . '/' . urlencode($validationKey).'
                 
-                
                                 ---------------
                                 Ceci est un mail automatique, Merci de ne pas y répondre.';
-                
                 $headers = "From:" . Configuration::get("noreply") . "\n";
                 $headers .= "Reply-To: $email";
                 
@@ -90,7 +88,7 @@ class ControllerRegistration extends Controller
         {
             $username = $this->request->getParameter("username");
             $key = $this->request->getParameter("key");
-            $user = $this->usersManager->get($username);
+            $user = $this->usersManager->getByUsername($username);
             // Si la clef de validation de la BDD est la même que celle du mail
             if($user->getValidationKey() === $key)
             {

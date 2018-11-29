@@ -19,28 +19,31 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
+    <p class="help-block text-danger"><?= $errorMessage ?></p>
       
       <form method="post" action="login/login" id="contactForm" novalidate>
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
-            <label>Username</label>
-            <input name="username" type="text" class="form-control" placeholder="Username" id="username" required data-validation-required-message="Please enter your username.">
+            <label for="username">Nom d'utilisateur</label>
+            <input name="username" type="text" class="form-control" placeholder="Nom d'utilisateur" id="username" required data-validation-required-message="Veuillez renseigner ce champ.">
             <p class="help-block text-danger"></p>
           </div>
         </div>
         
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
-            <label>Password</label>
-            <input name="password" type="password" class="form-control" placeholder="Password" id="password" required data-validation-required-message="Please enter your password.">
+            <label for="password">Mot de passe</label>
+            <input name="password" type="password" class="form-control" placeholder="Mot de passe" id="password" required data-validation-required-message="Veuillez renseigner ce champ.">
             <p class="help-block text-danger"></p>
           </div>
         </div>
         
+        <p><a href="login/resetEmail">Mot de passe oublié ?</a></p>
+        
         <br>
         <div id="success"></div>
         <div class="form-group">
-          <button type="submit" name="submitted" class="btn btn-primary" value="submitted" id="sendMessageButton">Connexion</button>
+          <button type="submit" name="submitted" class="btn btn-primary" value="submitted">Connexion</button>
         </div>
       </form>
     </div>

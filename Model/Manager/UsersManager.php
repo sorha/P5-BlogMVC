@@ -39,7 +39,23 @@ class UsersManager extends Model
      * @throws \Exception Si aucune identifiant ne correspond un utilisateur dans la base de données
      * @return \BlogMVC\Model\Entity\User Un objet User
      */
-    public function get($username)
+    public function get($id)
+    {
+        $sql = 'SELECT id, username, email, password, activated, validation_key, user_type, date_creation FROM user WHERE id = ?';
+        $user = $this->executeRequest($sql, array($id));
+        
+        if ($user->rowCount() == 1)
+        {
+            $data = $user->fetch(\PDO::FETCH_ASSOC);
+            return new User($data);
+        }
+        else
+        {
+            throw new \Exception("Aucun utilisateur ne correspond à l'identifiant '$id'");
+        }
+    }
+    
+    public function getByUsername($username)
     {
         $sql = 'SELECT id, username, email, password, activated, validation_key, user_type, date_creation FROM user WHERE username = ?';
         $user = $this->executeRequest($sql, array($username));
@@ -51,7 +67,23 @@ class UsersManager extends Model
         }
         else
         {
-            throw new \Exception("Aucun utilisateur ne correspond à l'identifiant '$username'");
+            throw new \Exception("Aucun utilisateur ne correspond à l'username '$username'");
+        }
+    }
+    
+    public function getByEmail($email)
+    {
+        $sql = 'SELECT id, username, email, password, activated, validation_key, user_type, date_creation FROM user WHERE email = ?';
+        $user = $this->executeRequest($sql, array($email));
+        
+        if ($user->rowCount() == 1)
+        {
+            $data = $user->fetch(\PDO::FETCH_ASSOC);
+            return new User($data);
+        }
+        else
+        {
+            throw new \Exception("Aucun utilisateur ne correspond à l'email '$email'");
         }
     }
 

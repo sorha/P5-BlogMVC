@@ -6,7 +6,7 @@ use \BlogMVC\Model\Manager\CommentsManager;
 use \BlogMVC\Model\Entity\Post;
 use \BlogMVC\Model\Entity\User;
 use \BlogMVC\Model\Entity\Comment;
-
+use \Sorha\Framework\Configuration;
 
 require_once 'ControllerSecured.php'; // Pas de namespace utilisé car sinon casse le système de création automatique de controller
 
@@ -32,7 +32,7 @@ class ControllerAdmin extends ControllerSecured
         $this->generateView(array('numberPosts' => $numberPosts, 'username' => $username));
     }
     
-    // Gestion des posts
+    //======================== Gestion des posts ======================
     public function postsManagement()
     {
         // Verification si la personne est admin déjà faîtes dans ControllerSecured
@@ -57,9 +57,11 @@ class ControllerAdmin extends ControllerSecured
         $chapo = $this->request->getParameter("chapo");
         $content = $this->request->getParameter("content");
         
-        // Création d'un nouvel objet Post
-        $post = new Post(array('id' => $id, 'title' => $title, 'chapo' => $chapo, 'content' => $content));
-        // Ajout de l'objet Post dans la base de données
+        $post = $this->postsManager->get($id);
+        $post->setTitle($title);
+        $post->setChapo($chapo);
+        $post->setContent($content);
+        
         $this->postsManager->update($post);
         $this->redirect('admin', 'postsManagement');
     }
@@ -69,7 +71,7 @@ class ControllerAdmin extends ControllerSecured
         $id = $this->request->getParameter("id");
         $post = new Post(array('id' => $id));
         $this->postsManager->delete($post);
-        $this->redirect('admin', 'postsManagement');
+        $this->redirect('Admin', 'postsManagement');
     }
     
     public function addPost()
@@ -88,7 +90,7 @@ class ControllerAdmin extends ControllerSecured
         $this->executeAction("index");
     }
     
-    // Gestion des utilisateurs
+    //======================== Gestion des utilisateurs ======================
     public function usersManagement()
     {
         $users = $this->usersManager->getList();
@@ -100,10 +102,59 @@ class ControllerAdmin extends ControllerSecured
         $id = $this->request->getParameter("id");
         $user = new User(array('id' => $id));
         $this->usersManager->delete($user);
-        $this->redirect('admin', 'usersManagement');
+        $this->redirect('Admin', 'usersManagement');
     }
     
-    // Gestion des commentaires
+    public function userEdit()
+    {
+        $id = $this->request->getParameter("id");
+        $user = $this->usersManager->get($id);
+        $this->generateView(array('user' => $user));
+    }
+    
+    public function updateUser()
+    {
+        $id = $this->request->getParameter("id");
+        $username = $this->request->getParameter("username");
+        $email = $this->request->getParameter("email");
+        $userType = $this->request->getParameter("userType");
+        
+        $user = $this->usersManager->get($id);
+        $user->setUsername($username);
+        $user->setEmail($email);
+        $user->setUserType($userType);
+        
+        $this->usersManager->update($user);
+        $this->redirect('Admin', 'usersManagement');
+    }
+    
+    public function resetPassword()
+    {
+        $id = $this->request->getParameter("id");
+        $user = $this->usersManager->get($id);
+        // On génére un nouveau token qu'on attribue à l'utilisateur
+        $validationKey = md5(microtime(TRUE)*100000);
+        $user->setValidationKey($validationKey);
+        $this->usersManager->update($user);
+        
+        // Création et envoie de l'email
+        $to = $user->getEmail();
+        $email_subject = "Réinitialisation de votre mot de passe";
+        $email_body = 'Blog de Alexandre Depraetere.\n\n'
+                    . 'Bonjour ' . $user->getUsername()
+                    . ', veuillez cliquer sur le lien ci-dessous afin de réinitialiser votre mot de passe.\n\n '
+                    . Configuration::get("domain") . 'login/reset/' . urlencode($user->getUsername()) . '/' . urlencode($user->getValidationKey())
+                    . '
+                        ---------------
+                       Ceci est un mail automatique, Merci de ne pas y répondre.';
+        
+        $headers = "From:" . Configuration::get("noreply") . "\n";
+        $headers .= "Reply-To:" . $user->getEmail();
+        mail($to,$email_subject,$email_body,$headers);
+        $this->redirect('Admin', 'usersManagement');
+    }
+    
+    //======================== Gestion des commentaires ======================
     public function commentsManagement()
     {
         $comments = $this->commentsManager->getDisabledList();
@@ -113,9 +164,12 @@ class ControllerAdmin extends ControllerSecured
     public function enableComment()
     {
         $id = $this->request->getParameter("id");
-        $comment = new Comment(array('id' => $id, 'disabled' => 0));
-        $this->commentsManager->enable($comment);
-        $this->redirect('admin', 'commentsManagement');
+        
+        $comment = $this->commentsManager->get($id);
+        $comment->setDisabled(0);
+        
+        $this->commentsManager->update($comment);
+        $this->redirect('Admin', 'commentsManagement');
     }
     
     public function deleteComment()
@@ -123,6 +177,6 @@ class ControllerAdmin extends ControllerSecured
         $id = $this->request->getParameter("id");
         $comment = new Comment(array('id' => $id));
         $this->commentsManager->delete($comment);
-        $this->redirect('admin', 'commentsManagement');
+        $this->redirect('Admin', 'commentsManagement');
     }
 }

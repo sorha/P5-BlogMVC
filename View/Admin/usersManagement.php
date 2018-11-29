@@ -53,16 +53,16 @@
                 <td><?= $this->sanitize($user->getUserType()) ?></td>
                 <td><?= $this->sanitize($user->getDateCreation()) ?></td>
                 <td>
-					<a class="btn btn-primary" href="post/index/<?= $this->sanitize($user->getId()) ?>" target="_blank">
+					<a class="btn btn-primary" href="profile/index/<?= $this->sanitize($user->getId()) ?>" target="_blank">
 						<i class="fas fa-search"></i>
 					</a>
-					<a class="btn btn-success" href="admin/postEdit/<?= $this->sanitize($user->getId()) ?>">
+					<a class="btn btn-success" href="admin/userEdit/<?= $this->sanitize($user->getId()) ?>">
 						<i class="fas fa-pen"></i>
 					</a>
                 	<a class="btn btn-danger" href="admin/deleteUser/<?= $this->sanitize($user->getId()) ?>" onclick="return confirm('Attention cette action supprimera également les commentaires et posts associés à cet utilisateur ! Êtes vous sûr ?')">
                 		<i class="fas fa-trash-alt"></i>
                 	</a>
-                	<a class="btn btn-info" href="#" onclick="return confirm('Le mot de passe de cet utilisateur sera réinitialisé. Êtes vous sûr ?')">
+                	<a class="btn btn-info" href="admin/resetPassword/<?= $this->sanitize($user->getId()) ?>" onclick="return confirm('Le mot de passe de cet utilisateur sera réinitialisé. Êtes vous sûr ?')">
                 		<i class="fas fa-redo"></i>
                 	</a>
 

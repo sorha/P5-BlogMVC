@@ -135,10 +135,14 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="Content/startbootstrap-clean-blog-gh-pages/vendor/jquery/jquery.min.js"></script>
+    <script src="Content/startbootstrap-clean-blog-gh-pages/vendor/jquery/jquery.min.js"></script>	
     <script src="Content/startbootstrap-clean-blog-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom scripts for this template -->
     <script src="Content/startbootstrap-clean-blog-gh-pages/js/clean-blog.min.js"></script>
+    
+    <!-- JQuery Bootstrap Form Validation Plugin -->
+    <script src="Content/startbootstrap-clean-blog-gh-pages/js/jqBootstrapValidation.min.js"></script>
+    <script src="Content/validation.js"></script>
   </body>
 </html>

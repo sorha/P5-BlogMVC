@@ -9,7 +9,6 @@ class Router
     {   
         try 
         {
-            // Fusion des paramètres GET et POST de la requête
             // La création d'une requête crée également une session
             $request = new Request($_REQUEST);
 
@@ -44,7 +43,7 @@ class Router
         {
             $controller = $request->getParameter('controller');
             // Première lettre en majuscule
-            $controller = ucfirst(strtolower($controller));
+            $controller = ucfirst($controller);
         }
         // Creation du nom du fichier du contrôleur
         $classController = 'Controller' . $controller;

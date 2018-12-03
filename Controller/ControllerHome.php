@@ -6,11 +6,6 @@ use \Sorha\Framework\Controller;
 
 class ControllerHome extends Controller
 {
-	public function __construct()
-	{
-		
-	}
-
 	public function index() 
 	{
 		$this->generateView(array());

@@ -5,8 +5,6 @@ namespace BlogMVC\Model\Manager;
 use \Sorha\Framework\Model;
 use \BlogMVC\Model\Entity\Post;
 
-//require_once 'Model/Entity/Post.php';
-
 class PostsManager extends Model
 {
     /**

@@ -13,7 +13,7 @@ abstract class Controller
 
 	/** Requête entrante */
 	protected $request;
-
+	
 	/** Définit la requête entrante
 	 *
 	 * @param Request $request Requête entrante
@@ -22,7 +22,7 @@ abstract class Controller
 	{
 		$this->request = $request;
 	}
-
+	
 	/**
      * Exécute l'action à réaliser.
      * Appelle la méthode portant le même nom que l'action sur l'objet Controleur courant

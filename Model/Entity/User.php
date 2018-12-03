@@ -6,6 +6,11 @@ use Sorha\Framework\Entity;
 
 class User extends Entity
 {
+    const USERTYPE = [
+        1 => 'Membre',
+        2 => 'Admin'
+    ];
+    
     private $id;
     private $username;
     private $email;
@@ -22,6 +27,10 @@ class User extends Entity
     public function getActivated() { return $this->activated; }
 	public function getValidationKey() { return $this->validationKey; }
 	public function getUserType() { return $this->userType; }
+	public function getUserTypeString(): string
+	{
+	    return self::USERTYPE[$this->userType];
+	}
 	public function getDateCreation() { return $this->dateCreation; }
 	
 	public function getFormattedDateCreation() { return $this->getFormattedDateTime($this->dateCreation); }

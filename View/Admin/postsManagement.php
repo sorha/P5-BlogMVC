@@ -1,29 +1,13 @@
 <?php $this->title = "Mon Blog - Administration" ?>
 
-<!-- Page Header -->
-<header class="masthead" style="background-image: url('Content/startbootstrap-clean-blog-gh-pages/img/home-bg.jpg')">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
-          <h1>Administration</h1>
-          <span class="subheading">Que voulez-vous faire aujourd'hui ? 👷</span>
-          <br>
-          <a type="button" class="btn btn-primary" href="admin/index">Ajouter un post</a>
-          <a type="button" class="btn btn-secondary" href="admin/postsManagement">Gérer les posts</a>
-          <a type="button" class="btn btn-success" href="admin/usersManagement">Gérer les utilisateurs</a>
-          <a type="button" class="btn btn-danger" href="admin/commentsManagement">Modérer les commentaires</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
+<?php include 'adminNav.php'?>
 
 <!--  Content  -->
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
+    <p class="help-block text-error"><?= $errorMessage ?></p>
+    <p class="help-block text-success"><?= $successMessage ?></p>
       <p>Bienvenue, <?= $this->sanitize($username) ?> ! Ce blog contient <?= $this->sanitize($numberPosts) ?> posts.</p>
       
         <h2>Gestion des posts</h2>
@@ -51,13 +35,13 @@
                 <td><?= $this->sanitize($post->getDateUpdate()) ?></td>
                 <td><?= $this->sanitize($post->getUsername()) ?></td>
                 <td>
-					<a class="btn btn-primary" href="post/index/<?= $this->sanitize($post->getId()) ?>" target="_blank">
+					<a class="btn btn-primary" href="post/index/<?= $this->sanitize($post->getId()) ?>" target="_blank" style="padding:5px 5px;">
 						<i class="fas fa-search"></i>
 					</a>
-					<a class="btn btn-success" href="admin/postEdit/<?= $this->sanitize($post->getId()) ?>">
+					<a class="btn btn-success" href="admin/postEdit/<?= $this->sanitize($post->getId()) ?>" style="padding:5px 5px;">
 						<i class="fas fa-pen"></i>
 					</a>
-                	<a class="btn btn-danger" href="admin/deletePost/<?= $this->sanitize($post->getId()) ?>" onclick="return confirm('Attention cette action supprimera également les commentaires associés à ce post ! Êtes vous sûr ?')">
+                	<a class="btn btn-danger" href="admin/deletePost/<?= $this->sanitize($post->getId()) ?>" style="padding:5px 5px;" onclick="return confirm('Attention cette action supprimera également les commentaires associés à ce post ! Êtes vous sûr ?')">
                 		<i class="fas fa-trash-alt"></i>
                 	</a>
 

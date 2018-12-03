@@ -17,6 +17,9 @@ class ControllerAdmin extends ControllerSecured
     private $usersManager;
     private $commentsManager;
     
+    private $errorMessage = "";
+    private $successMessage = "";
+    
     public function __construct()
     {
         $this->postsManager = new PostsManager();
@@ -27,9 +30,8 @@ class ControllerAdmin extends ControllerSecured
     public function index()
     {
         // Verification si la personne est admin déjà faîtes dans ControllerSecured
-        $numberPosts = $this->postsManager->count();
         $username = $this->request->getSession()->getAttribute("username");
-        $this->generateView(array('numberPosts' => $numberPosts, 'username' => $username));
+        $this->generateView(array('username' => $username, 'errorMessage' => $this->errorMessage ="", 'successMessage' => $this->successMessage));
     }
     
     //======================== Gestion des posts ======================
@@ -40,7 +42,7 @@ class ControllerAdmin extends ControllerSecured
         $username = $this->request->getSession()->getAttribute("username");
         
         $posts = $this->postsManager->getList();
-        $this->generateView(array('posts' => $posts, 'numberPosts' => $numberPosts, 'username' => $username));
+        $this->generateView(array('posts' => $posts, 'numberPosts' => $numberPosts, 'username' => $username, 'errorMessage' => $this->errorMessage ="", 'successMessage' => $this->successMessage));
     }
     
     public function postEdit()
@@ -63,7 +65,9 @@ class ControllerAdmin extends ControllerSecured
         $post->setContent($content);
         
         $this->postsManager->update($post);
-        $this->redirect('admin', 'postsManagement');
+        
+        $this->successMessage = "Post mise à jour avec succès !";
+        $this->executeAction('postsManagement');
     }
     
     public function deletePost()
@@ -71,7 +75,9 @@ class ControllerAdmin extends ControllerSecured
         $id = $this->request->getParameter("id");
         $post = new Post(array('id' => $id));
         $this->postsManager->delete($post);
-        $this->redirect('Admin', 'postsManagement');
+        
+        $this->successMessage = "Post supprimé avec succès !";
+        $this->executeAction('postsManagement');
     }
     
     public function addPost()
@@ -87,6 +93,7 @@ class ControllerAdmin extends ControllerSecured
         $this->postsManager->add($post);
         
         // Exécution de l'action par défaut pour réafficher le menu d'administration
+        $this->successMessage = "Post publié avec succès !";
         $this->executeAction("index");
     }
     
@@ -94,7 +101,7 @@ class ControllerAdmin extends ControllerSecured
     public function usersManagement()
     {
         $users = $this->usersManager->getList();
-        $this->generateView(array('users' => $users));
+        $this->generateView(array('users' => $users, 'errorMessage' => $this->errorMessage ="", 'successMessage' => $this->successMessage));
     }
     
     public function deleteUser()
@@ -102,7 +109,9 @@ class ControllerAdmin extends ControllerSecured
         $id = $this->request->getParameter("id");
         $user = new User(array('id' => $id));
         $this->usersManager->delete($user);
-        $this->redirect('Admin', 'usersManagement');
+        
+        $this->successMessage = "Utilisateur supprimé avec succès !";
+        $this->executeAction('usersManagement');
     }
     
     public function userEdit()
@@ -125,7 +134,9 @@ class ControllerAdmin extends ControllerSecured
         $user->setUserType($userType);
         
         $this->usersManager->update($user);
-        $this->redirect('Admin', 'usersManagement');
+        
+        $this->successMessage = "Utilisateur mise à jour avec succès !";
+        $this->executeAction('usersManagement');
     }
     
     public function resetPassword()
@@ -151,14 +162,16 @@ class ControllerAdmin extends ControllerSecured
         $headers = "From:" . Configuration::get("noreply") . "\n";
         $headers .= "Reply-To:" . $user->getEmail();
         mail($to,$email_subject,$email_body,$headers);
-        $this->redirect('Admin', 'usersManagement');
+        
+        $this->successMessage = "Mail de réinitialisation de mot de passe envoyé avec succès !";
+        $this->executeAction('usersManagement');
     }
     
     //======================== Gestion des commentaires ======================
     public function commentsManagement()
     {
         $comments = $this->commentsManager->getDisabledList();
-        $this->generateView(array('comments' => $comments));
+        $this->generateView(array('comments' => $comments, 'errorMessage' => $this->errorMessage ="", 'successMessage' => $this->successMessage));
     }
     
     public function enableComment()
@@ -169,7 +182,9 @@ class ControllerAdmin extends ControllerSecured
         $comment->setDisabled(0);
         
         $this->commentsManager->update($comment);
-        $this->redirect('Admin', 'commentsManagement');
+        
+        $this->successMessage = "Commentaire activé avec succès !";
+        $this->executeAction('commentsManagement');
     }
     
     public function deleteComment()
@@ -177,6 +192,8 @@ class ControllerAdmin extends ControllerSecured
         $id = $this->request->getParameter("id");
         $comment = new Comment(array('id' => $id));
         $this->commentsManager->delete($comment);
-        $this->redirect('Admin', 'commentsManagement');
+        
+        $this->successMessage = "Commentaire supprimé avec succès !";
+        $this->executeAction('commentsManagement');
     }
 }

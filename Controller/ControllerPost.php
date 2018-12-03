@@ -11,6 +11,9 @@ class ControllerPost extends Controller
 {
 	private $postsManager;
 	private $commentsManager;
+	
+	private $errorMessage = "";
+	private $successMessage = "";
 
 	public function __construct()
 	{
@@ -30,6 +33,7 @@ class ControllerPost extends Controller
 		// Ajout de l'objet Comment dans la base de données
         $this->commentsManager->add($comment);
         // Exécution de l'action par défaut pour réafficher la liste des billets
+        $this->successMessage = 'Commentaire envoyé avec succès ! Il sera visible dès qu\'il sera validé par un admin.';
         $this->executeAction("index");
 	}
 
@@ -40,6 +44,6 @@ class ControllerPost extends Controller
         $post = $this->postsManager->get($postId);
         $comments = $this->commentsManager->getList($postId);
         
-        $this->generateView(array('post' => $post, 'comments' => $comments));
+        $this->generateView(array('post' => $post, 'comments' => $comments, 'errorMessage' => $this->errorMessage, 'successMessage' => $this->successMessage));
     }
 }

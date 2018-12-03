@@ -7,17 +7,18 @@ use BlogMVC\Model\Manager\UsersManager;
 class ControllerLogin extends Controller
 {
     private $usersManager;
-    private $_errorMessage;
+    
+    private $errorMessage = "";
+    private $successMessage = "";
     
     public function __construct()
     {
-        $this->_errorMessage ="";
         $this->usersManager = new UsersManager();
     }
     
     public function index()
     {
-        $this->generateView(array('errorMessage' => $this->_errorMessage));
+        $this->generateView(array('errorMessage' => $this->errorMessage, 'successMessage' => $this->successMessage));
     }
     
     public function login()
@@ -51,21 +52,21 @@ class ControllerLogin extends Controller
                 else
                 {
                     // Si le compte n'est pas activé
-                    $this->_errorMessage = 'Compte non-activé : Veuillez activer votre compte via le mail qui vous a été envoyé.';
+                    $this->errorMessage = 'Compte non-activé : Veuillez activer votre compte via le mail qui vous a été envoyé.';
                     $this->executeAction("index");
                 }
             }
             else 
             {
                 // Si les identifiants sont incorrects
-                $this->_errorMessage = 'Login ou mot de passe incorrects';
+                $this->errorMessage = 'Login ou mot de passe incorrects';
                 $this->executeAction("index");
             }
         }
         else 
         {
             // Si un des champs est vide
-            $this->_errorMessage = 'Login et/ou mot de passe non défini';
+            $this->errorMessage = 'Login et/ou mot de passe non défini';
             $this->executeAction("index");
         }
     }
@@ -148,6 +149,7 @@ class ControllerLogin extends Controller
             else
             {
                 throw new \Exception("Clé de validation incorrect !");
+                
             }
         }
         else

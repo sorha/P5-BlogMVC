@@ -34,7 +34,7 @@
             <label for="confirmPassword">Confirmer le nouveau mot de passe</label>
             <input name="confirmPassword" type="password" class="form-control" placeholder="Confirmer le nouveau mot de passe" id="confirmPassword" required data-validation-required-message="Veuillez renseigner ce champ." data-validation-match-match="password" data-validation-match-message="Pas identique au mot de passe">
             <p class="help-block text-danger"></p>
-          </div>
+          </div>	
         </div>
         
         <input type="hidden" name="username" value="<?= $this->sanitize($user->getUsername()) ?>" required/>

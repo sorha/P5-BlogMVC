@@ -32,12 +32,13 @@ class UsersManager extends Model
 
         return $usersTab; // Renvoi un tableau d'objet User
     }
+    
     /**
      * Renvoi un objet User qui existe dans la base de données.
      * 
      * @param int $id
      * @throws \Exception Si aucune identifiant ne correspond un utilisateur dans la base de données
-     * @return \BlogMVC\Model\Entity\User Un objet User
+     * @return User
      */
     public function get($id)
     {

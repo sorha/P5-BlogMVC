@@ -21,7 +21,6 @@
   </head>
 
   <body>
-  	<!-- Debug -->
     <?php if(!empty($_SESSION['username'])) { ?>
         <div class="alert alert-success" style="position:fixed; left:0; bottom:0; z-index:100;">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -32,7 +31,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="home">Mon Blog</a>
+        <a class="navbar-brand" href="home">Alex Depra</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>

@@ -22,28 +22,24 @@
 
 <?php foreach ($posts as $post):
     ?>
-  <div class="post-preview">
-    <a href="<?= "post/index/" . $this->sanitize($post->getId()) ?>">
-      <h2 class="post-title">
-        <?= $this->sanitize($post->getTitle()) ?>
-      </h2>
-      <h3 class="post-subtitle">
-        <?= $this->sanitize($post->getChapo())  ?>
-      </h3>
-    </a>
-    <p class="post-meta">Posté par
-      <a href="#"><?= $this->sanitize($post->getUsername()) ?></a>
-      le <time><?= $this->sanitize($post->getFormattedDateCreation()) ?></time>
-      <br />Dernière mise à jour le <time><?= $this->sanitize($post->getFormattedDateUpdate()) ?></time>
-    </p>
-  </div>
-  <hr>
+      <div class="post-preview">
+        <a href="<?= "post/index/" . $this->sanitize($post->getId()) ?>">
+          <h2 class="post-title">
+            <?= $this->sanitize($post->getTitle()) ?>
+          </h2>
+          <h3 class="post-subtitle">
+            <?= $this->sanitize($post->getChapo())  ?>
+          </h3>
+        </a>
+        <p class="post-meta">Posté par
+          <?= $this->sanitize($post->getUsername()) ?>
+          le <time><?= $this->sanitize($post->getFormattedDateCreation()) ?></time>
+          <br />Dernière mise à jour le <time><?= $this->sanitize($post->getFormattedDateUpdate()) ?></time>
+        </p>
+      </div>
+      <hr>
 <?php endforeach; ?>
 
-      <!-- Pager -->
-      <div class="clearfix">
-        <a class="btn btn-primary float-right" href="#">Articles plus anciens &rarr;</a>
-      </div>
     </div>
   </div>
 </div>

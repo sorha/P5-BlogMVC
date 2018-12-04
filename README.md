@@ -28,5 +28,6 @@ Veillez à bien remplir tout les champs avec vos informations de la même façon
 * noreply = _'noreply@votredomaine.com'_  
 * domain = _'http://votredomaine.com/NomDuDossierRacine/'_	_Ne pas indiquer de NomDeDossierRacine/ si les fichiers se trouvent à la base de votre dossier web_  
 * timezone = 'Europe/Paris'	_A remplacer en fonction de votre zone horaire, voir http://php.net/manual/fr/timezones.php_  
+
 __Etape 4__ : Votre blog est désormais fonctionnel ! Vous pouvez y créer un compte dans l'onglet "Inscription" sans oublier de cliquer sur le lien de validation de votre email. Ensuite, dans votre base de données et dans la table "user", modifier la colonne "usertype" de l'utilisateur que vous venez de créer et mettez y la valeur 2. Enregistrer, vous disposez désormais d'un compte administrateur qui vous permet de gérer votre blog via le menu "Administration"
 

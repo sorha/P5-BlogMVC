@@ -15,18 +15,18 @@ Le thème Bootstrap utilisé est [Clean Blog](http://startbootstrap.com/template
 
 ### Installation
 ----------------
-__Etape 1__ : Transférer les fichiers dans le dossier web de votre serveur web (en général "www/").
-__Etape 2__ : Créer une base données sur votre SGDB (MySQL) et importer le fichier DB/p5blog.sql afin d'y créer les différentes tables
-__Etape 3__ : Remplisser le fichier Config/prod.ini ou Config/dev.ini selon votre environnement. 
-Attention ! Supprimez dev.ini si vous souhaitez utiliser le fichier prod.ini !
-Veillez à bien remplir tout les champs avec vos informations de la même façon que celle fournit pour exemple !
-* rootWeb = /NomDuDossierRacine/	_Laisser un "/" si les fichiers se trouvent à la base de votre dossier web_
-* dsn = 'mysql:host=_AdresseBaseDeDonnées_;dbname=_NomBaseDeDonnées_;charset=_utf8_'
-* login = _utilisateurDeBaseDeDonnées_
-* password = _motDePasseDeBaseDeDonnées_
-* email = _'votreEmailDeReception@gmail.com'_
-* noreply = _'noreply@votredomaine.com'_
-* domain = _'http://votredomaine.com/NomDuDossierRacine/'_	_Ne pas indiquer de NomDeDossierRacine/ si les fichiers se trouvent à la base de votre dossier web_
-* timezone = 'Europe/Paris'	_A remplacer en fonction de votre zone horaire, voir http://php.net/manual/fr/timezones.php_
+__Etape 1__ : Transférer les fichiers dans le dossier web de votre serveur web (en général "www/").  
+__Etape 2__ : Créer une base données sur votre SGDB (MySQL) et importer le fichier DB/p5blog.sql afin d'y créer les différentes tables  
+__Etape 3__ : Remplisser le fichier Config/prod.ini ou Config/dev.ini selon votre environnement.  
+Attention ! Supprimez dev.ini si vous souhaitez utiliser le fichier prod.ini !  
+Veillez à bien remplir tout les champs avec vos informations de la même façon que celle fournit pour exemple !  
+* rootWeb = /NomDuDossierRacine/	_Laisser un "/" si les fichiers se trouvent à la base de votre dossier web_  
+* dsn = 'mysql:host=_AdresseBaseDeDonnées_;dbname=_NomBaseDeDonnées_;charset=_utf8_'  
+* login = _utilisateurDeBaseDeDonnées_  
+* password = _motDePasseDeBaseDeDonnées_  
+* email = _'votreEmailDeReception@gmail.com'_  
+* noreply = _'noreply@votredomaine.com'_  
+* domain = _'http://votredomaine.com/NomDuDossierRacine/'_	_Ne pas indiquer de NomDeDossierRacine/ si les fichiers se trouvent à la base de votre dossier web_  
+* timezone = 'Europe/Paris'	_A remplacer en fonction de votre zone horaire, voir http://php.net/manual/fr/timezones.php_  
 __Etape 4__ : Votre blog est désormais fonctionnel ! Vous pouvez y créer un compte dans l'onglet "Inscription" sans oublier de cliquer sur le lien de validation de votre email. Ensuite, dans votre base de données et dans la table "user", modifier la colonne "usertype" de l'utilisateur que vous venez de créer et mettez y la valeur 2. Enregistrer, vous disposez désormais d'un compte administrateur qui vous permet de gérer votre blog via le menu "Administration"
 

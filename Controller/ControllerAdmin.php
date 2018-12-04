@@ -88,7 +88,13 @@ class ControllerAdmin extends ControllerSecured
         $content = $this->request->getParameter("content");
         
         // Création d'un nouvel objet Post
-        $post = new Post(array('title' => $title, 'chapo' => $chapo, 'content' => $content, 'dateCreation' => date('Y-m-d H:i:s'), 'userId' => $userId));
+        $post = new Post(array(
+            'title' => $title, 
+            'chapo' => $chapo, 
+            'content' => $content, 
+            'dateCreation' => date('Y-m-d H:i:s'), 
+            'userId' => $userId
+        ));
         // Ajout de l'objet Post dans la base de données
         $this->postsManager->add($post);
         

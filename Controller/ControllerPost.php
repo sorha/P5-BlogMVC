@@ -27,7 +27,7 @@ class ControllerPost extends Controller
 		$postId = $this->request->getParameter("id");
 		$userId = $this->request->getSession()->getAttribute("userId");
         $content = $this->request->getParameter("content");
-
+        
         // Création d'un nouvel objet Comment
 		$comment = new Comment(array('content' => $content, 'dateCreation' => date('Y-m-d H:i:s'), 'userId' => $userId, 'postId' => $postId));
 		// Ajout de l'objet Comment dans la base de données

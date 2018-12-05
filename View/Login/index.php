@@ -19,7 +19,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
-    <p class="help-block text-error"><?= $errorMessage ?></p>
+    <p class="help-block text-danger"><?= $errorMessage ?></p>
     <p class="help-block text-success"><?= $successMessage ?></p>
       
       <form method="post" action="login/login" id="contactForm" novalidate>

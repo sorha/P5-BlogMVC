@@ -18,6 +18,9 @@
 
     <!-- Custom styles for this template -->
     <link href="Content/startbootstrap-clean-blog-gh-pages/css/clean-blog.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="Content/main.css" rel="stylesheet">
   </head>
 
   <body>

@@ -94,7 +94,7 @@
             	<div class="card-header">
             		<?= $this->sanitize($comment->getUsername()) ?> a commenté le <?= $this->sanitize($comment->getFormattedDateCreation()) ?> :
             		<?php if(isset($_SESSION['userType']) && $_SESSION['userType'] == 'admin') {?>
-            		<a class="btn btn-danger" href="admin/deleteComment/<?= $this->sanitize($comment->getId()) ?>" style="padding:5px 10px; position:absolute; top:10px; right:10px;" onclick="return confirm('Cette action supprimera ce commentaire de façon permanente. Êtes vous sûr ?')">
+            		<a class="btn btn-danger operation" id="deleteComment" href="admin/deleteComment/<?= $this->sanitize($comment->getId()) ?>" onclick="return confirm('Cette action supprimera ce commentaire de façon permanente. Êtes vous sûr ?')">
                 		<i class="fas fa-trash-alt"></i>
                 	</a>
                 	<?php } ?>

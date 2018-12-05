@@ -1,0 +1,16 @@
+.operation
+{
+	padding:5px 5px;
+}
+
+#deleteComment
+{
+	position:absolute; 
+	top:10px; 
+	right:10px;
+}
+
+.adminBtn
+{
+	margin:5px;
+}

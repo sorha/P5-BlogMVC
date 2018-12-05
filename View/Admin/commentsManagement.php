@@ -6,7 +6,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
-    <p class="help-block text-error"><?= $errorMessage ?></p>
+    <p class="help-block text-danger"><?= $errorMessage ?></p>
     <p class="help-block text-success"><?= $successMessage ?></p>
         <h2>Gestion des commentaires non-modérés</h2>
         <p><i class="fas fa-check"></i> = Valider le commentaire</p>   
@@ -32,10 +32,10 @@
                 <td><?= $this->sanitize($comment->getUsername()) ?></td>
                 <td><?= $this->sanitize($comment->getPostId()) ?></td>
                 <td>
-					<a class="btn btn-success" href="admin/enableComment/<?= $this->sanitize($comment->getId()) ?>" style="padding:5px 10px;">
+					<a class="btn btn-success operation" href="admin/enableComment/<?= $this->sanitize($comment->getId()) ?>">
 						<i class="fas fa-check"></i>
 					</a>
-                	<a class="btn btn-danger" href="admin/deleteComment/<?= $this->sanitize($comment->getId()) ?>" style="padding:5px 10px;" onclick="return confirm('Cette action supprimera ce commentaire de façon permanente. Êtes vous sûr ?')">
+                	<a class="btn btn-danger operation" href="admin/deleteComment/<?= $this->sanitize($comment->getId()) ?>" onclick="return confirm('Cette action supprimera ce commentaire de façon permanente. Êtes vous sûr ?')">
                 		<i class="fas fa-trash-alt"></i>
                 	</a>
 

@@ -131,6 +131,14 @@
               </li>
             </ul>
             <p class="copyright text-muted">Copyright &copy; alexandre-depraetere.com/blog 2018</p>
+            <?php
+            if(isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin')
+            {
+            ?>
+              <p class="text-center"><a href="admin">Administration</a></p>
+            <?php 
+            }
+            ?>
           </div>
         </div>
       </div>

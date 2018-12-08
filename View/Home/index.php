@@ -22,7 +22,8 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
-      <p>Cette section sera complété par les informations de la page d'accueil</p>
+      <p>Bienvenue sur mon blog !</p>
+      <p> Celui-ci a été réalisé via PHP via une architecture MVC Orienté objet. <br /> Vous y découvrirez des articles sur la développement ou encore la réalité de ma vie dans ce domaine !</p>
     </div>
   </div>
 </div>

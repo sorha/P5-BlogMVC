@@ -1,4 +1,7 @@
 # P5-BlogMVC
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d6133cb481c042a7b21aa9f116cbc8a5)](https://app.codacy.com/app/sorha/P5-BlogMVC?utm_source=github.com&utm_medium=referral&utm_content=sorha/P5-BlogMVC&utm_campaign=Badge_Grade_Dashboard)
+
 Projet 5 de mon parcours Développeur d'application PHP/Symfony chez OpenClassrooms.
 Création d'un Blog via une architecture MVC Orienté objet.
 

@@ -31,6 +31,8 @@ class Session
      */
     public function setAttribute($name, $value)
     {
+        $name = htmlspecialchars($name);
+        $value = htmlspecialchars($value);
         $_SESSION[$name] = $value;
     }
     /**

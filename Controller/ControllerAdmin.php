@@ -8,7 +8,7 @@ use \BlogMVC\Model\Entity\User;
 use \BlogMVC\Model\Entity\Comment;
 use \Sorha\Framework\Configuration;
 
-require_once 'ControllerSecured.php'; // Pas de namespace utilisé car sinon casse le système de création automatique de controller
+require_once 'ControllerSecured.php';
 
 /** Controleur des actions d'administration. Hérite de ControllerSecured afin de vérifier l'authentification */
 class ControllerAdmin extends ControllerSecured

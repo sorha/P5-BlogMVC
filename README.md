@@ -35,3 +35,5 @@ Veillez à bien remplir tout les champs avec vos informations de la même façon
 
 __Etape 4__ : Votre blog est désormais fonctionnel ! Vous pouvez y créer un compte dans l'onglet "Inscription" sans oublier de cliquer sur le lien de validation de votre email. Ensuite, dans votre base de données et dans la table "user", modifier la colonne "usertype" de l'utilisateur que vous venez de créer et mettez y la valeur 2. Enregistrer, vous disposez désormais d'un compte administrateur qui vous permet de gérer votre blog via le menu "Administration"
 
+Attention ! La protection de répertoires doit être réalisée sous Apache soit via httpd.conf ou soit via des fichiers [.htaccess et .htpasswd](https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql/918580-proteger-un-dossier-avec-un-htaccess)  
+Veuillez à bien protéger le dossier Config/ ainsi que tout les autres dossiers contenant du code qui ne doit pas être accessible par l'utilisateur !

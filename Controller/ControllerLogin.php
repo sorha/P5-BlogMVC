@@ -23,6 +23,7 @@ class ControllerLogin extends Controller
     
     public function login()
     {
+        sleep(1);
         if ($this->request->existsParameter("username") && $this->request->existsParameter("password")) 
         {
             $username = $this->request->getParameter("username");
@@ -47,7 +48,6 @@ class ControllerLogin extends Controller
                         $this->request->getSession()->setAttribute("userType", 'member');
                         $this->redirect("Home");
                     }
-
                 }
                 else
                 {

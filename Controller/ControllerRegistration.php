@@ -33,7 +33,11 @@ class ControllerRegistration extends Controller
             
             if(!filter_var($email, FILTER_VALIDATE_EMAIL))
             {
-                throw new Exception("L'email est invalide.");
+                throw new Exception("L'email est invalide !");
+            }
+            
+            if (strlen($password) < 6) {
+                throw new Exception("Mot de passe trop court ! Minimum 6 caractères");
             }
             
             if($password === $confirmPassword)

@@ -40,7 +40,7 @@
         <div class="control-group">
           <div class="form-group floating-label-form-group controls">
             <label>Mot de passe</label>
-            <input name="password" type="password" class="form-control" placeholder="Mot de passe" id="password" required data-validation-required-message="Veuillez renseigner ce champ.">
+            <input name="password" type="password" class="form-control" placeholder="Mot de passe" id="password" title="6 caracteres minimum" required data-validation-required-message="Veuillez renseigner ce champ." pattern=".{6,}" data-validation-pattern-message="6 caractères minimum.">
             <p class="help-block text-danger"></p>
           </div>
         </div>

@@ -10,7 +10,7 @@
           <h1>Alex Depra</h1>
           <span class="subheading">Un Blog MVC POO</span>
           <p>
-          	<a href="Content/CV.pdf" target="_blank" class="btn btn-success" alt="Bouton Telechargement CV">Telecharger mon CV !</a>
+          	<a href="Content/CV.pdf" target="_blank" class="btn btn-success">Telecharger mon CV !</a>
           </p>
         </div>
       </div>

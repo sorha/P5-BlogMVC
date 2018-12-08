@@ -11,8 +11,8 @@
           <h2 class="subheading"><?= $this->sanitize($post->getChapo()) ?></h2>
           <span class="meta">Posté par
             <?= $this->sanitize($post->getUsername()) ?>
-            le <time><?= $this->sanitize($post->getFormattedDateCreation()) ?></time>
-            <br />Dernière mise à jour le <time><?= $this->sanitize($post->getFormattedDateUpdate()) ?></time>
+            le <?= $this->sanitize($post->getFormattedDateCreation()) ?>
+            <br />Dernière mise à jour le <?= $this->sanitize($post->getFormattedDateUpdate()) ?>
           </span>
         </div>
       </div>

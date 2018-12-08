@@ -33,8 +33,8 @@
         </a>
         <p class="post-meta">Posté par
           <?= $this->sanitize($post->getUsername()) ?>
-          le <time><?= $this->sanitize($post->getFormattedDateCreation()) ?></time>
-          <br />Dernière mise à jour le <time><?= $this->sanitize($post->getFormattedDateUpdate()) ?></time>
+          le <?= $this->sanitize($post->getFormattedDateCreation()) ?>
+          <br />Dernière mise à jour le <?= $this->sanitize($post->getFormattedDateUpdate()) ?>
         </p>
       </div>
       <hr>

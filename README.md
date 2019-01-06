@@ -17,7 +17,7 @@ Le thème Bootstrap utilisé est [Clean Blog](http://startbootstrap.com/template
 ## Installation
 __Etape 1__ : Transférer les fichiers dans le dossier web de votre serveur web (en général "www/").  
 __Etape 2__ : Créer une base données sur votre SGDB (MySQL) et importer le fichier DB/p5blog.sql afin d'y créer les différentes tables  
-__Etape 3__ : Remplisser le fichier Config/prod.ini ou Config/dev.ini selon votre environnement.  
+__Etape 3__ : Remplir le fichier Config/prod.ini ou Config/dev.ini selon votre environnement.  
 Attention ! Supprimez dev.ini si vous souhaitez utiliser le fichier prod.ini !  
 Veillez à bien remplir tout les champs avec vos informations de la même façon que celle fournit pour exemple ! 
 
